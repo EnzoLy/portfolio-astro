@@ -1,0 +1,69 @@
+---
+const { items, label, projects } = Astro.props;
+---
+
+<div>
+  <button
+    id={label + '-dropdown-button'}	
+    class="flex 
+    items-center 
+    justify-center
+    px-3 py-2
+    text-gray-400
+    gap-1
+    text-sm font-light rounded-md hover:text-white 
+    hover:bg-opacity-75 focus:outline-none"
+  >
+    <span>{label}</span>
+    <svg
+      id={label + '-dropdown-icon'}
+      class="size-3 transition-transform transform"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  </button>
+  <ul
+    id={label + '-dropdown-menu'}
+    class="absolute mt-2 hidden bg-opacity-60 backdrop-blur-md rounded-md shadow-lg z-10"
+  >
+    {items.map(item => (
+      <li>
+        <button
+          class="w-full text-left px-4 py-2 text-sm text-gray-400 hover:text-white"
+          data-tech={item.value}
+        >
+          {item.label}
+        </button>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<script is:inline define:vars={{ label }}>
+  const dropdownButton = document.getElementById(label + '-dropdown-button');
+  const dropdownMenu = document.getElementById(label + '-dropdown-menu');
+  const dropdownIcon = document.getElementById(label + '-dropdown-icon');
+
+  dropdownButton.addEventListener('click', () => {
+    const isHidden = dropdownMenu.classList.toggle('hidden');
+    dropdownIcon.style.transform = isHidden ? 'rotate(0deg)' : 'rotate(180deg)';
+    dropdownButton.setAttribute('aria-expanded', !isHidden);
+  });
+
+  document.addEventListener('click', event => {
+    if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+      dropdownMenu.classList.add('hidden');
+      dropdownIcon.style.transform = 'rotate(0deg)';
+      dropdownButton.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>

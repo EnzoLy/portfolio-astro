@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout title="Enzo Loyola - Developer">
+  <div class="flex flex-col min-h-screen">
+    <Header />
+    
+    <article class="
+    flex flex-col 
+    gap-3 my-2 
+    justify-center items-center
+    max-w-5xl mx-auto
+    px-4 py-4 
+    text-gray-500 
+    leading-relaxed
+    text-balance
+    text-sm">
+      <h2 class="font-light text-white-500 text-center text-white my-5 text-4xl">
+        About Me
+      </h2>
+      <p class="">
+        My name is Enzo, and I am a developer from La Pampa, Argentina. 
+        I began my programming journey six years ago with Java, primarily focusing on Minecraft server development. 
+        My particular areas of interest include backend development, made libraries/utilities and web development.
+      </p>
+
+      <p class="">
+        In my spare time, I work on personal projects and continuously expand my skill set by learning new languages and technologies.
+        This curiosity has led me to explore various fields, including web, desktop, command-line tools development. 
+        Currently, I am developing an e-commerce platform with a Java backend and an Astro frontend.
+      </p>
+    </article>
+    <Footer/>
+  </div>
+</Layout>
