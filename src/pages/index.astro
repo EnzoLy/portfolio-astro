@@ -51,7 +51,7 @@ const projects = [
   <div class="flex flex-col min-h-screen bg-black text-white">
     <Header />
 
-    <main class="flex flex-grow max-w-3xl mx-auto px-4 py-16 gap-2 flex-col">
+    <main class="flex flex-grow mx-auto px-4 py-16 gap-2 flex-col">
       <h1 class="text-5xl font-light text-white-500 text-center">Enzo Loyola</h1>
       <h2 class="text-1xl font-light text-gray-500 text-center">
         Java and web developer
@@ -120,21 +120,49 @@ const projects = [
               data-tech={project.tech.toLowerCase()}
               data-tech={project.tech}
             >
-              <div class="flex flex-col md:flex-row items-baseline justify-between">
-                <h3 class="text-xl font-light text-white">{project.title}</h3>
-                <span class="text-sm text-gray-500">{project.tech}</span>
+              <div class="flex flex-col md:flex-row items-center justify-between">
+                <h3 class="text-xl text-white">{project.title}</h3>
+                <span class="text-balance text-sm text-gray-500 font-light">{project.tech}</span>
               </div>
-              <p class="text-gray-400 text-sm leading-relaxed mt-2 text-balance">
+              <p class="text-gray-400 text-sm leading-relaxed text-balance">
                 {project.description}
               </p>
-              <a
-                href={project.link}
-                class="text-sm text-gray-500 hover:text-white transition-colors duration-200 inline-block mt-2"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                view source →
-              </a>
+              <div class="flex justify-end items-center gap-3">
+                <a
+                  href={project.link}
+                  class="text-sm
+                  text-gray-500
+                  hover:text-white 
+                  transition-colors
+                  duration-300 
+                  inline-block
+                  border-b-2
+                  border-black
+                  hover:border-white"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  view source
+                </a>
+                <span class="text-gray-500 text-sm">•</span>
+                <a
+                  href={project.link}
+                  class="text-sm
+                  text-gray-500
+                  hover:text-white 
+                  transition-colors
+                  duration-300 
+                  inline-block
+                  border-b-2
+                  border-black
+                  hover:border-white
+                  "
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  visit site
+                </a>
+              </div>
             </article>
           ))}
         </div>
