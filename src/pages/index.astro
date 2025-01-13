@@ -1,50 +1,53 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Github from '../icons/Github.astro';
-import X from '../icons/X.astro';
-import LinkedIn from '../icons/LinkedIn.astro';
-import Dropdown from '../components/Dropdown.astro';
+import Layout from '../layouts/Layout.astro'
+import Header from '@components/Header.astro'
+import Footer from '@components/Footer.astro'
+import Github from '@icons/Github.astro'
+import X from '@icons/X.astro'
+import LinkedIn from '@icons/LinkedIn.astro'
+import Projects from '@components/Projects.astro'
 
-const projects = [
+const projects: Project[] = [
   {
-    title: "Paste Bin",
-    tech: "Astro, Java, Spring Boot",
-    description: "A simple text/code sharing platform.",
-    link: "https://github.com/yourusername/economy-plugin"
+    title: 'Paste Bin',
+    techs: ['Java', 'Spring Boot', 'MongoDB'],
+    description: 'A simple text/code sharing platform.',
+    link: 'https://github.com/yourusername/economy-plugin',
   },
   {
-    title: "E-commerce Backend",
-    tech: "Java, Spring Boot, MongoDB",
-    description: "Scalable microservices architecture for e-commerce applications.",
-    link: "https://github.com/yourusername/ecommerce-backend"
+    title: 'E-commerce Backend',
+    techs: ['Java', 'Spring Boot', 'MongoDB'],
+    description:
+      'Scalable microservices architecture for e-commerce applications.',
+    link: 'https://github.com/yourusername/ecommerce-backend',
   },
   {
-    title: "Skywars plugin",
-    tech: "Kotlin, Spigot API, Redis, MongoDB",
-    description: "Popular skywars minigame plugin for Minecraft servers.",
-    link: "https://github.com/yourusername/server-manager"
+    title: 'Skywars plugin',
+    techs: ['Java', 'Spigot API'],
+    description: 'Popular skywars minigame plugin for Minecraft servers.',
+    link: 'https://github.com/yourusername/server-manager',
   },
   {
-    title: "Redis Manager Library",
-    tech: "Java, Redis",
-    description: "RedisManager is a lightweight Java library that simplifies Redis connection management and packet handling.",
-    link: "https://github.com/yourusername/server-manager"
+    title: 'Redis Manager Library',
+    techs: ['Java', 'Redis'],
+    description:
+      'RedisManager is a lightweight Java library that simplifies Redis connection management and packet handling.',
+    link: 'https://github.com/yourusername/server-manager',
   },
   {
-    title: "Authentication Service",
-    tech: "Java, Spring Security, JWT",
-    description: "Secure authentication service with role-based access control and token management.",
-    link: "https://github.com/yourusername/auth-service"
+    title: 'Authentication Service',
+    techs: ['Java', 'Spring Boot', 'JWT'],
+    description:
+      'Secure authentication service with role-based access control and token management.',
+    link: 'https://github.com/yourusername/auth-service',
   },
   {
-    title: "Plomeria website",
-    tech: "React, NextJS",
-    description: "Website for client with Plomeria services.",
-    link: "https://github.com/yourusername/auth-service"
-  }
-];
+    title: 'Plomeria website',
+    techs: ['Next.js'],
+    description: 'Website for client with Plomeria services.',
+    link: 'https://github.com/yourusername/auth-service',
+  },
+]
 ---
 
 <Layout title="Enzo Loyola - Developer">
@@ -52,7 +55,9 @@ const projects = [
     <Header />
 
     <main class="flex flex-grow mx-auto px-4 py-16 gap-2 flex-col">
-      <h1 class="text-5xl font-light text-white-500 text-center">Enzo Loyola</h1>
+      <h1 class="text-5xl font-light text-white-500 text-center">
+        Enzo Loyola
+      </h1>
       <h2 class="text-1xl font-light text-gray-500 text-center">
         Java and web developer
       </h2>
@@ -83,90 +88,7 @@ const projects = [
         </a>
       </div>
 
-      <section class="flex flex-col mt-10 gap-4">
-        <h3 class="text-xl font-light text-white text-center focus:border-0 focus:border-none">Projects</h3>
-
-        <div class="relative flex justify-center gap-3 lg:justify-end">
-          <Dropdown label="tech" items={[
-            { label: "All", value: "" },
-            { label: "Java", value: "Java" },
-            { label: "Spring Boot", value: "Spring Boot" },
-            { label: "Spigot API", value: "Spigot API" },
-            { label: "Paper API", value: "Paper API" },
-            { label: "WebSocket", value: "WebSocket" }
-          ]} projects = {projects}/>
-          <Dropdown label="type" items={[
-            { label: "All", value: "" },
-            { label: "Plugin", value: "Plugin" },
-            { label: "Backend", value: "Backend" },
-            { label: "Management", value: "Management" },
-            { label: "Service", value: "Service" }
-          ]} projects = {projects} />
-          <Dropdown label="sort" items={[
-            { label: "Newest", value: "Newest" },
-            { label: "Oldest", value: "Oldest" }
-          ]} projects = {projects}/>
-        </div>
-        
-        <div
-          class="flex flex-col gap-9 overflow-y-auto max-h-[500px] 
-          scrollbar-thin scrollbar-thumb-gray-500 
-          scrollbar-thumb-rounded-lg px-3"
-          id="project-list"
-        >
-          {projects.map((project, index) => (
-            <article
-              class="group project my-3 md:my-0"
-              data-tech={project.tech.toLowerCase()}
-              data-tech={project.tech}
-            >
-              <div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
-                <h3 class="text-xl text-white">{project.title}</h3>
-                <span class="text-balance text-sm text-gray-500 font-light">{project.tech}</span>
-              </div>
-              <p class="text-gray-400 text-sm leading-relaxed text-balance mt-2">
-                {project.description}
-              </p>
-              <div class="flex justify-start items-center gap-3 mt-2">
-                <a
-                  href={project.link}
-                  class="text-sm
-                  text-gray-500
-                  hover:text-white 
-                  transition-colors
-                  duration-300 
-                  inline-block
-                  border-b-2
-                  border-black
-                  hover:border-white"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  view source
-                </a>
-                <span class="text-gray-500 text-sm">•</span>
-                <a
-                  href={project.link}
-                  class="text-sm
-                  text-gray-500
-                  hover:text-white 
-                  transition-colors
-                  duration-300 
-                  inline-block
-                  border-b-2
-                  border-black
-                  hover:border-white
-                  "
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  visit site
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      <Projects projects={projects} />
     </main>
     <Footer />
   </div>
